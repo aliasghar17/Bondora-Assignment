@@ -1,0 +1,118 @@
+version: 2
+models:
+  - name: stg_customers
+    description: "Staging table for customers data"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        data_tests:
+          - unique
+          - not_null
+      - name: country_code
+        description: "Country code of the customer's residency"
+      - name: phone_number
+        description: "Customer's phone number"
+
+  - name: stg_loan_applications
+    description: "Staging table for loan applications data"
+    columns:
+      - name: application_id
+        description: "Unique identifier for each loan application"
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Identifier for the customer who applied for the loan"
+        data_tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: country_code
+        description: "Country code where the application was made"
+        data_tests:
+          - relationships:
+              to: ref('stg_countries')
+              field: country_code
+      - name: product_id
+        description: "Identifier for the loan product type"
+        data_tests:
+          - relationships:
+              to: ref('stg_loan_products')
+              field: product_id
+      - name: application_started_at
+        description: "Timestamp when the application was started"
+      - name: requested_amount
+        description: "Amount requested in the loan application"
+      - name: loan_id
+        description: "Identifier for the issued loan"
+      - name: loan_issued_at
+        description: "Timestamp when the loan was issued"
+      - name: loan_amount
+        description: "Amount issued for the loan"
+
+  - name: stg_loans
+    description: "Staging table for loans data"
+    columns:
+      - name: loan_id
+        description: "Unique identifier for each loan"
+        data_tests:
+          - unique
+          - not_null
+      - name: loan_status
+        description: "Current status of the loan"
+      - name: loan_issued_at
+        description: "Timestamp when the loan was issued"
+      - name: loan_repaid_at
+        description: "Timestamp when the loan was fully repaid"
+      - name: principal_balance
+        description: "Current principal balance of the loan"
+      - name: principal_debt
+        description: "Current principal debt of the loan"
+      - name: principal_paid_total
+        description: "Total principal amount paid towards the loan"
+      - name: interest_paid_total
+        description: "Total interest amount paid towards the loan"
+      - name: maintenance_fee_paid_total
+        description: "Total maintenance fees"
+  - name: stg_repayments
+    description: "Staging table for repayments data"
+    columns:
+      - name: loan_id
+        description: "Identifier for the loan associated with the repayment"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_loans')
+              field: loan_id
+      - name: report_date
+        description: "Date of the repayment report"
+      - name: principal_balance
+        description: "Principal balance after the repayment"
+      - name: principal_debt
+        description: "Principal debt after the repayment"
+      - name: principal_paid
+        description: "Principal amount paid in this repayment"
+      - name: interest_paid
+        description: "Interest amount paid in this repayment"
+      - name: maintenance_fee_paid
+        description: "Maintenance fee paid in this repayment"
+  - name: stg_countries
+    description: "Staging table for countries data"
+    columns:
+      - name: country_code
+        description: "Unique code for each country"
+        data_tests:
+          - unique
+          - not_null
+      - name: country_name
+        description: "Name of the country"
+  - name: stg_loan_products
+    description: "Staging table for loan products data"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each loan product"
+        data_tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Name of the loan product"

@@ -1,0 +1,22 @@
+[
+    {
+        "CountryCode": "FI",
+        "CountryName": "Finland"
+    },
+    {
+        "CountryCode": "EE",
+        "CountryName": "Estonia"
+    },
+    {
+        "CountryCode": "LV",
+        "CountryName": "Latvia"
+    },
+    {
+        "CountryCode": "NL",
+        "CountryName": "Netherlands"
+    },
+    {
+        "CountryCode": "ES",
+        "CountryName": "Spain"
+    }
+]

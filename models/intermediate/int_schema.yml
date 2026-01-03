@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: int_loans_joined
+    description: "Intermediate table for loans data"
+    columns:
+      - name: loan_id
+        description: "Unique identifier for each loan"
+        data_tests:
+          - unique
+          - not_null
+      - name: application_id
+        description: "Identifier for the application associated with the loan"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_loan_applications')
+              field: application_id
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: product_id
+        description: "Identifier for the product associated with the loan"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_loan_products')
+              field: product_id
+  - name: int_repayments
+    description: "Intermediate table for repayments data"
+    columns:
+      - name: loan_id
+        description: "Unique identifier for each loan"
+        data_tests:
+          - not_null
+          - unique
+      - name: principal_paid_total
+        description: "Total principal amount paid for the loan"
+      - name: interest_paid_total
+        description: "Total interest amount paid for the loan"
+      - name: fees_paid_total
+        description: "Total fees paid for the loan"
+      - name: first_repayment_date
+        description: "Date of the first repayment made for the loan"
+      - name: last_repayment_date
+        description: "Date of the most recent repayment made for the loan"
+      - name: number_of_repayments
+        description: "Total number of repayments made for the loan"
+      - name: total_collections
+        description: "Total cash collected from the loan including principal, interest, and fees"  
+  - name: int_customers
+    description: "Intermediate table for customers data"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        data_tests:
+          - unique
+          - not_null
+      - name: country_code
+        description: "Country code of the customer"
+        data_tests:
+          - not_null
+      - name: first_name
+        description: "First name of the customer"
+        data_tests:
+          - not_null
+      - name: last_name
+        description: "Last name of the customer"
+        data_tests:
+          - not_null
+      
+          

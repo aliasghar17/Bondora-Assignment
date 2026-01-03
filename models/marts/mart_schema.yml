@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Dimension table for customers data"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        data_tests:
+          - unique
+          - not_null
+  - name: dim_products
+    description: "Dimension table for loan products data"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each loan product"
+        data_tests:
+          - unique
+          - not_null
+  - name: fct_loans
+    description: "Fact table for loans data"
+    columns:
+      - name: loan_id
+        description: "Unique identifier for each loan"
+        data_tests:
+          - unique
+          - not_null
+      - name: application_to_issuance_days
+        description: "Number of days between application start and loan issuance"
+      - name: applied_loan_amount
+        description: "The amount of loan requested by the customer in the application"
+      - name: principal_paid_verified
+        description: "Verified total principal amount paid in all the repayment transactions"
+      - name: total_collections
+        description: "Total cash collected from the loan including principal, interest, and fees"
+      - name: number_of_repayments
+        description: "Total number of repayments made for the loan"
+      - name: is_principal_recovered
+        description: "Flag indicating if the loan principal has been fully recovered"
+      - name: days_since_last_repayment
+        description: "Number of days elapsed since the most recent repayment. Only calculated for Active loans to monitor potential risk."
