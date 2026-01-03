@@ -2,6 +2,8 @@
 
 **Data pipeline for Bondora loan data using dbt and DuckDB.** The goal is to transform raw CSV and JSON files into an optimized, self-service dataset for analysis and monitoring of key metrics.
 
+
+testing
 ---
 
 ## Tools
@@ -33,7 +35,6 @@
 - Build analyst-facing star schema (dimensions and fact tables).
 - Provide clean, documented datasets ready for dashboards and reporting.
 - Here is the ERD for this layer.
-- ----change the ERD
 TODO: change the ERD
 ![alt text](image.png)
 ---
@@ -64,6 +65,7 @@ TODO: change the ERD
 ## Running the project (local)
 
 1. Ensure you have dbt installed and a local DuckDB database configured (this project uses `dev.duckdb`).
+    Note: I used AI to setup this.
 
 2. Run models:
 
@@ -75,7 +77,7 @@ TODO: change the ERD
 
 ---
 
-> **Tip:** Check the `models/` and `source_data/` folders for details and examples of model logic and source files.
+ **Tip:** Check the `models/` and `source_data/` folders for details and examples of model logic and source files.
 
 ---
 
