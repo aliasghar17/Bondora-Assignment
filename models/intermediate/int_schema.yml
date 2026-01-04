@@ -58,7 +58,7 @@ models:
         description: "Date of the most recent repayment made for the loan"
       - name: number_of_repayments
         description: "Total number of repayments made for the loan"
-      - name: total_collections
+      - name: collections_total
         description: "Total cash collected from the loan including principal, interest, and fees"  
   
       
