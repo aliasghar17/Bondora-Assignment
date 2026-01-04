@@ -29,7 +29,7 @@ SELECT
     applications.country_code,
     applications.application_started_at,
     loans.loan_issued_at,
-    DATE_DIFF('day', applications.application_started_at, loans.loan_issued_at) AS application_to_issuance_days,
+    DATE_DIFF('day', applications.application_started_at, loans.loan_issued_at) AS application_to_issuance_days, -- Application to loan issuance date
     loans.loan_status,
     applications.requested_amount AS applied_loan_amount,
     applications.loan_amount AS principal_amount,

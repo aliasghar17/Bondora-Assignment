@@ -33,7 +33,7 @@ SELECT
     loans.applied_loan_amount,
     loans.principal_amount,
     loans.principal_paid_total,
-    COALESCE(repayments.principal_paid_total, 0) AS principal_paid_verified, -- reconciled principal paid
+    COALESCE(repayments.principal_paid_total, 0) AS principal_paid_verified, -- Reconciled principal paid
     loans.principal_outstanding_amount,
 
     -- Other Financial Facts 

@@ -60,6 +60,9 @@ models:
           - not_null
       - name: loan_status
         description: "Current status of the loan"
+        data_tests:
+          - accepted_values:
+              values: ['Active', 'Repaid', 'Defaulted']
       - name: loan_issued_at
         description: "Timestamp when the loan was issued"
       - name: loan_repaid_at

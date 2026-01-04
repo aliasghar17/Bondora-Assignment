@@ -16,19 +16,17 @@ WITH repayment_data AS (
 
 SELECT
     loan_id,
-    -- Financial Aggregations
+    -- Aggregations
     SUM(principal_paid) AS principal_paid_total,
     SUM(interest_paid) AS interest_paid_total,
     SUM(maintenance_fee_paid) AS fees_paid_total,
-    -- Date Aggregations
+    -- Dates
     MIN(report_date) AS first_repayment_date,
     MAX(report_date) AS last_repayment_date,
     
-    -- Transactional metrics
-    COUNT(*) AS number_of_repayments,
+    COUNT(*) AS number_of_repayments, -- Total number of repayments made
     
-    -- Total cash collected from this loan
-    SUM(principal_paid + interest_paid + maintenance_fee_paid) AS collections_total
+    SUM(principal_paid + interest_paid + maintenance_fee_paid) AS collections_total -- Total amount collected
 
 FROM repayment_data
 GROUP BY 1
