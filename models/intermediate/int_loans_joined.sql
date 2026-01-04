@@ -26,7 +26,7 @@ SELECT
     applications.application_id,
     customers.customer_id,
     applications.product_id,
-    customers.country_code,
+    applications.country_code,
     applications.application_started_at,
     loans.loan_issued_at,
     DATE_DIFF('day', applications.application_started_at, loans.loan_issued_at) AS application_to_issuance_days,

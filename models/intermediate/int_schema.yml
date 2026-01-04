@@ -30,6 +30,14 @@ models:
           - relationships:
               to: ref('stg_loan_products')
               field: product_id
+      - name: country_code
+        description: "Country code where the loan was issued"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_countries')
+              field: country_code
+      
   - name: int_repayments
     description: "Intermediate table for repayments data"
     columns:
@@ -52,25 +60,6 @@ models:
         description: "Total number of repayments made for the loan"
       - name: total_collections
         description: "Total cash collected from the loan including principal, interest, and fees"  
-  - name: int_customers
-    description: "Intermediate table for customers data"
-    columns:
-      - name: customer_id
-        description: "Unique identifier for each customer"
-        data_tests:
-          - unique
-          - not_null
-      - name: country_code
-        description: "Country code of the customer"
-        data_tests:
-          - not_null
-      - name: first_name
-        description: "First name of the customer"
-        data_tests:
-          - not_null
-      - name: last_name
-        description: "Last name of the customer"
-        data_tests:
-          - not_null
+  
       
           

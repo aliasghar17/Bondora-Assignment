@@ -1,5 +1,5 @@
 SELECT
-    UPPER(CountryCode) AS country_code,
-    CountryName AS country_name
+    CAST(UPPER(CountryCode) AS VARCHAR) AS country_code,
+    CAST(CountryName AS VARCHAR) AS country_name
 FROM
     read_json_auto('source_data/countries.json')

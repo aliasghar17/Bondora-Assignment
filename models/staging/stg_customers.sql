@@ -1,6 +1,6 @@
 SELECT
     CAST(borrower_id AS VARCHAR) AS customer_id,
-    UPPER(country_of_residency) AS country_code,
+    CAST(country_of_residency AS VARCHAR) AS country_code,
     first_name,
     last_name,
     CAST(phone_number AS VARCHAR) AS phone_number,
